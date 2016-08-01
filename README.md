@@ -14,4 +14,4 @@ Install steps
 3. mkdir build
 4. cd build
 5. cmake .. && make
-6. ./wol <macaddr> <ipaddr> <port>
+6. ./wol macaddr ipaddr port
