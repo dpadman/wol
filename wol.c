@@ -1,3 +1,9 @@
+/*
+ * @author      Dinoja Padmanabhan
+ * @version     1.0
+ * @copyright   GNU General Public License
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -52,18 +58,19 @@ int main(int argc, char **argv) {
     if (sockfd < 0)
         error("socket call failed");
 
-    // send the packet to the IP
     memset(&server, 0, sizeof(server));
     server.sin_family = AF_INET;
     server.sin_addr.s_addr = inet_addr(argv[2]);
     server.sin_port = htons(atoi(argv[3]));
     serverlen = sizeof(server);
 
+    // send the packet to the IP
     n = sendto(sockfd, magic_pkt, sizeof(magic_pkt), 0, 
               (struct sockaddr *)&server, serverlen);
     if (n < 0)
         error("sendto call failed");
 
+    // close the socket
     close(sockfd);
     return 0;
 }
