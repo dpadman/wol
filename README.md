@@ -9,7 +9,7 @@ Requirements
 
 Install steps
 -------------
-1. git@github.com:dpadman/wol.git 
+1. git clone git@github.com:dpadman/wol.git 
 2. cd wol
 3. mkdir build
 4. cd build
