@@ -9,9 +9,9 @@ Requirements
 
 Install steps
 -------------
-git clone 
-cd wol
-mkdir build
-cd build
-cmake .. && make
-./wol <macaddr> <ipaddr> <port>
+1. git@github.com:dpadman/wol.git 
+2. cd wol
+3. mkdir build
+4. cd build
+5. cmake .. && make
+6. ./wol <macaddr> <ipaddr> <port>
