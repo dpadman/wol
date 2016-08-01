@@ -37,25 +37,28 @@ int main(int argc, char **argv) {
     uint8_t macaddr[6];
     struct sockaddr_in server;
 
-    uint8_t magic_pkt[102]; //mac F4:8E:38:AB:3A:B5
+    uint8_t magic_pkt[102];
 
     if (argc != 4) {
         usage();
     }
 
     get_macaddr(argv[1], macaddr);
+
+    // creates the magic packet
     create_magic_pkt(magic_pkt, sizeof(magic_pkt), macaddr);
 
     sockfd = socket(AF_INET, SOCK_DGRAM, 0);
     if (sockfd < 0)
         error("socket call failed");
 
+    // send the packet to the IP
     memset(&server, 0, sizeof(server));
     server.sin_family = AF_INET;
     server.sin_addr.s_addr = inet_addr(argv[2]);
     server.sin_port = htons(atoi(argv[3]));
-
     serverlen = sizeof(server);
+
     n = sendto(sockfd, magic_pkt, sizeof(magic_pkt), 0, 
               (struct sockaddr *)&server, serverlen);
     if (n < 0)
